@@ -61,7 +61,7 @@ h4 {
   font-weight: 400;
 }
 
-p {
+p, li {
   color: #878787;
   font-size: 16px;
   font-weight: 300;
