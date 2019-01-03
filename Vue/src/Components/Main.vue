@@ -6,11 +6,9 @@
           <a v-html="item.menuText" v-scroll-to="'#' + item.scroll" ></a>
         </li>
       </ul>
-      <select id="language" v-model="currentLocale" @change="eachLocale">
-        <option v-for="locale in locales" :bind="currentLocale" :value="locale.id">
-        {{locale.id}}
-        </option>
-      </select>
+      <div id="language" v-model="currentLocale" :bind="getDataByLocale" @click="toggleLang">
+       <img v-for="locale in locales" :bind="currentLocale"  class="lang-option" :src="locale.img" :value="locale.id">
+      </div>
 
 
     </header>
@@ -63,7 +61,7 @@
         </div>
       </div>
     </section>
-    <section id="contact">
+    <section id="Susisiekti">
         <div class="row">
 
           <div class="col-md-12 col-sm-12">
@@ -108,35 +106,64 @@
     data() {
       return {
         currentLocale: 'lt',
-        locales: [{id: 'lt', img: require("../assets/images/flag-lt.png") }, {id: 'ru', img: require("../assets/images/flag-ru.png")}],
+        locales: [
+            {id: 'lt', img: require("../assets/images/flag-lt.png") },
+            {id: 'ru', img: require("../assets/images/flag-ru.png")}
+            ],
         menu: "",
         paslaugos: "",
         apie: ""
       }
     },
     mounted() {
-      this.eachLocale();
+      this.getDataByLocale();
     },
     methods: {
-      eachLocale() {
+      getDataByLocale() {
         if (this.currentLocale === 'lt') {
-          this.menu = data_lt.menu;
-          this.paslaugos = data_lt.paslaugos;
-          this.apie = data_lt.apie;
-        } else {
-          this.menu = data_ru.menu;
-          this.paslaugos = data_ru.paslaugos;
-          this.apie = data_ru.apie
-        }
+            this.getLtData();
 
-      }
+        } else {
+            this.getRuData();
+        }
+      },
+        toggleLang(){
+          let target = event.target;
+          let lang = target.getAttribute('value');
+
+            if(lang === 'ru'){
+             this.getRuData();
+            }else {
+               this.getLtData();
+            }
+        },
+        getLtData(){
+            this.currentLocale = 'lt';
+            this.menu = data_lt.menu;
+            this.paslaugos = data_lt.paslaugos;
+            this.apie = data_lt.apie;
+        },
+        getRuData(){
+            this.currentLocale = 'ru';
+            this.menu = data_ru.menu;
+            this.paslaugos = data_ru.paslaugos;
+            this.apie = data_ru.apie;
+        }
     }
   }
 </script>
 
 <style scoped lang="scss">
   header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 1110px;
+    background-color: #f4f4f4;
+    z-index: 1;
+    height: 60px;
+    .logo{
+      display: inline-block;
+    }
     ul {
       height: 60px;
       margin: 0;
@@ -155,19 +182,19 @@
         }
       }
     }
-    select{
+    #language{
       position: absolute;
       top: 20px;
       right: 0;
+      width: 40px;
+      display: flex;
+      justify-content: space-between;
+
+      .lang-option{
+        cursor: pointer;
+      }
     }
-    select#language option[value="lt"]{
-      background-image: url("../assets/images/flag-lt.png");
-      background-size: cover;
-    }
-    select#language option[value="ru"]{
-      background-image: url("../assets/images/flag-ru.png");
-      background-size: cover;
-    }
+
   }
 
   .main {
@@ -178,6 +205,7 @@
     justify-content: center;
     background-position: center;
     background-size: cover;
+    margin-top: 60px;
     .home-wrapper {
       background: rgba(250, 250, 250, 0.8);
       padding: 32px 12px;
@@ -191,6 +219,7 @@
     padding-top: 100px;
     img {
       width: 100%;
+      opacity: 0.8;
     }
     .col-md-4 {
       a {
@@ -219,7 +248,7 @@
       width: 300px;
     }
   }
-  #contact .form-control {
+  #Susisiekti .form-control {
     border: none;
     border-bottom: 1px solid #f0f0f0;
     border-radius: 5px;
@@ -231,11 +260,11 @@
     transition: all ease-in-out 0.4s;
   }
 
-  #contact input {
+  #Susisiekti input {
     height: 55px;
   }
 
-  #contact button#submit {
+  #Susisiekti button#submit {
     background: #d7b065;
     border: none;
     border-radius: 40px;
@@ -247,9 +276,38 @@
     margin-top: 24px;
   }
 
-  #contact button#submit:hover {
+  #Susisiekti button#submit:hover {
     background: #3d3d3f;
     color: #ffffff;
   }
+  @media only screen and (max-width: 992px) {
+    header {
+      width: 690px;
+      ul {
+        display: none;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px){
+    header{
+      width: 510px;
+    }
+    .form-control{
+      &.button{
+        width: 100%;
+      }
+    }
+  }
+  @media only screen and (max-width: 576px){
+    header{
+      width: 100%;
+      #language{
+        right: 30px;
+      }
+    }
+  }
+
+
 
 </style>

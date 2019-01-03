@@ -6,7 +6,7 @@
     },
     {
       "scroll": "matavimai",
-      "menuText": "Inventorizacija - kadastriniaimatavimai"
+      "menuText": "Inventorizacija - kadastriniai matavimai"
     },
     {
       "scroll": "deklaracijos",
@@ -23,7 +23,7 @@
   ],
   "paslaugos": [
     {
-      "name": "Inventorizacija – kadastriniaimatavimai",
+      "name": "Inventorizacija – kadastriniai matavimai",
       "id": "matavimai",
       "text": [
         "Inventorizacija atliekama norint įregistruoti ir įteisinti nekilnojamąjį turtą - naujos ar senos statybos (teisiškai neįregistruotus) pastatus ar inžinerinius kiemo statinius.",
