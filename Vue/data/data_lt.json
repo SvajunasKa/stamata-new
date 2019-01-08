@@ -25,6 +25,7 @@
     {
       "name": "Inventorizacija – kadastriniai matavimai",
       "id": "matavimai",
+      "img": "src/assets/images/matavimai.jpeg",
       "text": [
         "Inventorizacija atliekama norint įregistruoti ir įteisinti nekilnojamąjį turtą - naujos ar senos statybos (teisiškai neįregistruotus) pastatus ar inžinerinius kiemo statinius.",
         "Susisiekimo komunikacijų – kelių ir jų dalių inventorizacija.",
@@ -45,6 +46,7 @@
     {
       "name": "Statybų deklaracijos",
       "id": "deklaracijos",
+      "img": "src/assets/images/construction.jpg",
       "text": [
         "Deklaracija apie statybos užbaigimą ar paskirties keitimą yra pagrindas įregistruoti statinį ir nuosavybės teises į jį nekilnojamojo turto registre.",
         "Norint įregistruoti statinius ir nuosavybės teises į juos nekilnojamojo turto registre, reikia pateikti:",
@@ -56,6 +58,7 @@
     {
       "name": "Silpnų srovių projektai",
       "id": "SilpnųjųSroviųProjektavimas",
+      "img": "src/assets/images/building.jpg",
       "text": [
         "Elektros įvadų projektai atliekami pagal AB „Elektros skirstymo operatoriaus“ (ESO) prisijungimo sąlygas.",
         "Gaisro signalizavimo sistemos (GSS) paskirtis yra skelbti aliarmo signalą, kilus gaisro pavojui. Analizuoti patalpų būseną gaisro atžvilgiu 24 val. per parą. Vertinti gaisro galimybę ir skelbti apie iškilusį gaisro pavojų. Vidinių ir išorinių sirenų pagalba perspėti apie gaisrą pastate esančius žmones, o ryšių sistemų pagalba informuoti saugos tarnybas.",

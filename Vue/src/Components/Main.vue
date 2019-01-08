@@ -23,10 +23,10 @@
 
       </div>
     </section>
-    <section v-for="item in apie" class="about">
-      <div class="row"  :id="item.id">
+    <section v-for="item in apie" class="about" :id="item.id">
+      <div class="row"  >
         <div class="col-md-4 col-sm-8">
-          <img src="../assets/images/contacts.jpeg">
+          <img src="../assets/images/smartphone.jpg">
             <h4>Sumunmis galite susisiekti tel.: +370 601 52996</h4>
             <p>elektroniniu paštu</p>
             <a>info@stamata.lt</a>
@@ -45,10 +45,10 @@
         </div>
       </div>
     </section>
-    <section v-for="item in paslaugos" class="about" >
-      <div class="row" :id="item.id">
+    <section v-for="item in paslaugos" class="about" :id="item.id">
+      <div class="row" >
         <div class="col-md-4 col-sm-8">
-          <img src="../assets/images/contacts.jpeg">
+          <img :src="item.img"/>
         </div>
         <div class="col-md-8 col-sm-12">
           <div class="about-thumb">
@@ -168,7 +168,7 @@
       height: 60px;
       margin: 0;
       padding-left: 0;
-      width: 90%;
+      width: 84%;
       display: flex;
       justify-content: space-between;
       align-items: center;
