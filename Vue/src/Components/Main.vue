@@ -1,7 +1,15 @@
 <template>
   <div class="container">
     <header>
-      <ul>
+      <div class="menu-btn" @click="showMenu">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <div class="logo">
+        <img src="../../src/assets/images/logo.png"/>
+      </div>
+      <ul class="nav-menu">
         <li v-for="item in menu" >
           <a v-html="item.menuText" v-scroll-to="'#' + item.scroll" ></a>
         </li>
@@ -9,8 +17,6 @@
       <div id="language" v-model="currentLocale" :bind="getDataByLocale" @click="toggleLang">
        <img v-for="locale in locales" :bind="currentLocale"  class="lang-option" :src="locale.img" :value="locale.id">
       </div>
-
-
     </header>
     <section class="main">
       <div class="home-wrapper">
@@ -65,10 +71,9 @@
         <div class="row">
 
           <div class="col-md-12 col-sm-12">
-            <!-- SECTION TITLE -->
             <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
               <h2>Susisiekite su mumus</h2>
-             <p>STAMATA, MB</p>
+              <p>STAMATA, MB</p>
               <p>Vadovas: Vladas Stabingis</p>
               <p>Įmonės kodas: 304690726</p>
               <p>Tel.: +370-601-52996</p>
@@ -78,7 +83,6 @@
           </div>
 
           <div class="col-md-12 col-sm-12">
-            <!-- CONTACT FORM HERE -->
               <form action="#" method="post" id="contact-form">
                   <input type="text" class="form-control" name="name" placeholder="Vardas">
                   <input type="email" class="form-control" name="email" placeholder="E-paštas">
@@ -148,7 +152,13 @@
             this.menu = data_ru.menu;
             this.paslaugos = data_ru.paslaugos;
             this.apie = data_ru.apie;
-        }
+        },
+      showMenu(){
+        let menu = document.querySelector(".nav-menu");
+        let btn = document.querySelector(".menu-btn");
+        menu.classList.toggle("show");
+        btn.classList.toggle("change")
+      },
     }
   }
 </script>
@@ -161,8 +171,11 @@
     background-color: #f4f4f4;
     z-index: 1;
     height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .logo{
-      display: inline-block;
+      float: left;
     }
     ul {
       height: 60px;
@@ -183,15 +196,26 @@
       }
     }
     #language{
-      position: absolute;
-      top: 20px;
-      right: 0;
-      width: 40px;
+      width: 50px;
       display: flex;
       justify-content: space-between;
-
+      height: 60px;
+      align-items: center;
       .lang-option{
         cursor: pointer;
+        height: 15px;
+        width: 20px;
+      }
+    }
+    .menu-btn{
+      cursor: pointer;
+      display: none;
+      .bar1, .bar2, .bar3 {
+        width: 26px;
+        height: 3px;
+        background-color: #000000;
+        margin: 6px 0;
+        transition: 0.4s;
       }
     }
 
@@ -280,11 +304,38 @@
     background: #3d3d3f;
     color: #ffffff;
   }
+  @media only screen and (max-width: 1200px){
+    header{
+      width: 930px;
+    }
+  }
   @media only screen and (max-width: 992px) {
     header {
       width: 690px;
-      ul {
+      .nav-menu {
         display: none;
+        &.show{
+          display: block;
+          position: absolute;
+          background: #f4f4f4;
+          top: 59px;
+          height: 130px;
+          width: 100%;
+        }
+      }
+      .menu-btn{
+        display: inline-block;
+      }
+      .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-8px, 5px);
+      }
+
+      .change .bar2 {opacity: 0;}
+
+      .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-7px, -5px);
       }
     }
   }
@@ -301,10 +352,7 @@
   }
   @media only screen and (max-width: 576px){
     header{
-      width: 100%;
-      #language{
-        right: 30px;
-      }
+      width: 95%;
     }
   }
 
