@@ -21,6 +21,11 @@
       "menuText": "Susisiekti"
     }
   ],
+  "main_section": {
+    "name_text": "MB Stamata",
+    "decription_text": "Nekilnojamo turto kadastriniai matavimai"
+
+  },
   "paslaugos": [
     {
       "name": "Inventorizacija – kadastriniai matavimai",
@@ -41,7 +46,8 @@
         "Taip pat atliekame inventorizaciją – kadastrinius matavimus inžineriniams statiniams – keliai, susisiekimo komunikacijos ir jų dalys – tiltai, viadukai, sankryžos, automobilių stovėjimo aikštelės, šaligatviai, dviračių takai. Inventorizuojami lauko inžineriniai tinklai: vandentiekio trasos, nuotėkų kanalizacijos tinklai, lietaus kanalizacijos tinklai, dujotiekio trasos, ryšių, elektros ir kiti inžineriniai tinklai.",
         "Norint inventorizuoti statinius ar inžinerinius tinklus, prieš tai turi būti atlikti geodeziniai matavimai. Bendradarbiaujame su įmonėmis, kurios teikia geodezinių matavimų paslaugas. Inventorizacija atliekama Vilniuje, Kaune, Alytuje, Marijampolėje ir visoje Lietuvoje. Dirbame su individualiais užsakovais ir įmonėmis. Pas užsakovus atvykstame patys.",
         "Susisiekite su mumis, patarsime nekilnojamojo turto registracijos, statinių inventorizacijos ir kitais klausimais."
-      ]
+      ],
+      "button_text":"Plačiau"
     },
     {
       "name": "Statybų deklaracijos",
@@ -53,7 +59,8 @@
         "<ul><li>Deklaraciją apie statinio statybą be nukrypimų nuo esminių statinio projekto sprendinių;</li></ul>",
         "<ul><li>Deklaraciją apie statybos užbaigimą ar statinio paskirties keitimą.</li></ul>",
         "Nustatyta tvarka surašyta deklaracija su išvada, kad pastatytas statinys atitinka statinio projektą ir kitų teisės aktų reikalavimus, užregistruojama IS „Infostatyba“. Norint įregistruoti statinį nekilnojamojo turto registre, kartu su prašymu pateikiama deklaracija su registracijos žyma ir statinio kadastro duomenų inventorizacijos byla."
-      ]
+      ],
+      "button_text":"Plačiau"
     },
     {
       "name": "Silpnų srovių projektai",
@@ -69,10 +76,11 @@
       ],
       "text1":[
         "Visi projektai atliekami remiantis užsakovo užduotimi ir pageidavimais, bet galiojančiais teisės reglamentais."
-      ]
+      ],
+      "button_text":"Plačiau"
     }
   ],
-  "apie":[
+  "about":[
     {
       "name": "MB Stamata - teikiamos paslaugos",
       "id": "apie",
@@ -91,7 +99,32 @@
         "<ul><li>Ryšių (telekomunikacijų) tinklai.</li></ul>",
         "<b>Kadastriniai matavimai atliekami Vilniuje, Kaune, Alytuje, Marijampolėje ir visoje Lietuvoje.</b>",
         "Dirbame su individualiais užsakovais ir įmonėmis."
-      ]
+      ],
+      "button_text":"Plačiau"
     }
-  ]
+  ],
+  "contacts":
+    {
+      "img": "src/assets/images/smartphone.jpg",
+      "cont_head": "Su mumis galite susisiekti tel.:",
+      "cont_phone": "+370 601 52996",
+      "phone_link": "tel:+37060152996",
+      "cont_email_text": "Elektroniniu paštu:",
+      "cont_email": "info@stamata.lt",
+      "cont_text": "Arba užpildykite žemiau esančia forma ir mes su jumis susisieksim",
+      "contact_us": "Susisiekite su mumus",
+      "company_details": [
+        "STAMATA, MB",
+        "Vadovas: Vladas Stabingis",
+        "Įmonės kodas: 304690726",
+        "Tel.: +370-601-52996",
+        "El. p.: info@statmata.lt",
+        "Susisiekite su mumis ir sužinokite Jus dominančių paslaugų kainą ar kitą informaciją."
+      ],
+      "form_name": "Vardas",
+      "form_email": "E-paštas",
+      "form_message": "Žinutė",
+      "button_text": "Siųsti"
+    }
+
 }

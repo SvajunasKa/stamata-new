@@ -8,11 +8,18 @@ body {
 $font: 'Nunito Sans', sans-serif;
 $sub-font: 'Playfair Display', sans-serif;
 
+//colors
+$black: #000000;
+$orange: #d7b065;
+$white: #ffffff;
+
 h1,h2,h3,h4,h5,h6 {
   font-style: normal;
   font-weight: 300;
   letter-spacing: 0px;
 }
+
+
 
 h1 {
   color: #3d3d3f;
@@ -30,7 +37,7 @@ h2 {
 
 h3 {
   font-family: $font;
-  color: #d7b065;
+  color: $orange;
   font-size: 16px;
   font-weight: bold;
   line-height: 32px;
@@ -41,14 +48,14 @@ h3 {
 
 h4 {
   font-family: $font;
-  color: #797979;
+  color: $black;
   font-size: 20px;
   font-weight: 400;
 }
 
 p, li {
   font-family: $font;
-  color: #000000;
+  color: $black;
   font-size: 16px;
   font-weight: 300;
   line-height: 25px;
@@ -63,5 +70,5 @@ strong, span {
 
 a {
   font-family: $font;
-  color: #000000;;
+  color: $black;
 }
