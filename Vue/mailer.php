@@ -4,10 +4,8 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 $data = $_POST['data'];
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if(!empty($data['capcha']) && isset($data['capcha'])) {
 
             $name = strip_tags(trim($data['name']));
             $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
@@ -37,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Send the email.
 
-            if (mail($recipient, $subject, $email_content, $email_headers)) {
+            if (mail($recipient,$email_content, $email_headers)) {
                 // Set a 200 (okay) response code.
                 http_response_code(200);
                 echo "Ačiū, žinutė buvo išsiųsta.";
@@ -48,8 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo $response;
             }
 
-    }else{
-        echo 'capcha klaida';
-    }
+
 }
 ?>

@@ -79,15 +79,31 @@
 
                 <div class="col-md-12 col-sm-12">
                     <form @submit.prevent="submit" action="../../mailer.php" id="contact-form">
-                        <input v-model="contacts_form.name" type="text" class="form-control" name="name" :placeholder="contacts.form_name">
-                        <input v-model="contacts_form.email" type="email" class="form-control" name="email" :placeholder="contacts.form_email">
-                        <textarea v-model="contacts_form.message" class="form-control" rows="5" name="message"
-                                  :placeholder="contacts.form_message"></textarea>
-                      <div class="g-recaptcha" data-sitekey="6Lck6ogUAAAAADBVI0S548zIhbC6g0VTmMMZigPH"></div>
-                        <button id="submit" type="submit" class="form-control button" value="send-mail" name="submit"
-                                v-html="contacts.button_text"></button>
+                        <input
+                          v-model="name_cont"
+                          type="text" class="form-control"
+                          name="name" :placeholder="contacts.form_name">
+                        <input
+                          v-model="email_cont"
+                          type="email" class="form-control"
+                          name="email" :placeholder="contacts.form_email"
+                          :class="{invalid: $v.email.$error}"
+                          @input="$v.email.$touch()">
+                        <textarea
+                          v-model=" messg_cont"
+                          class="form-control"
+                          rows="5"
+                          name="message"
+                          :placeholder="contacts.form_message"></textarea>
+                        <button
+                          id="submit"
+                          type="submit"
+                          class="form-control button"
+                          value="send-mail"
+                          name="submit"
+                          v-html="contacts.button_text"></button>
 
-                        <div class="responce" v-html="responseText"></div>
+                        <p class="responce" v-html="responseText"></p>
                         <p v-html="error"></p>
                     </form>
                 </div>
@@ -96,7 +112,7 @@
         </section>
       <footer>
         <div class="container">
-          <a>stamata.lt
+          <a href="https://stamata.lt">&copy; stamata.lt
           </a>
         </div>
       </footer>
@@ -110,6 +126,7 @@
     import * as data_lt from '../../data/data_lt'
     import * as data_ru from '../../data/data_ru'
     import axios from 'axios'
+    import {required, email} from 'vuelidate/lib/validators'
 
     export default {
         name: "Pagrindinis",
@@ -124,12 +141,20 @@
                 paslaugos: "",
                 about: "",
                 main: "",
-                contacts_form: "",
+                name_cont: "",
+                email_cont: "",
+                messg_cont: "",
                 error: "",
                 contacts: {},
                 responseText: null,
             }
         },
+      validations: {
+        email: {
+          required,
+          email
+        }
+      },
         mounted() {
             this.getDataByLocale();
         },
@@ -180,18 +205,18 @@
             },
             submit() {
                 let formData = new FormData;
-                let values = Object.values(this.contacts);
+                let values = Object.values([this.name_cont, this.email_cont, this.messg_cont]);
                 for (let key in values) {
                     formData.append(key, values[key]);
                 }
-                let capchaRes = grecaptcha.getResponse();
-                if (capchaRes.length > 0) {
+                //let capchaRes = grecaptcha.getResponse();
+                //if (capchaRes.length > 0) {
                     axios.post("../../mailer.php", {
                         data: {
-                            'name': this.contacts.name,
-                            'email': this.contacts.email,
-                            'message':this.contacts.message,
-                            'capcha':capchaRes
+                            'name': this.name_cont,
+                            'email': this.email_cont,
+                            'message':this.messg_cont,
+                            //'capcha':capchaRes
                         }
                     })
                         .then(res => {
@@ -201,9 +226,9 @@
                         .catch(e => {
                             this.error = e.response.data;
                         })
-                } else {
-                    this.error = "Užpildykite formą"
-                }
+                // } else {
+                //     this.error = "Užpildykite formą"
+                // }
             }
         }
     }
@@ -343,6 +368,17 @@
     #Susisiekti button#submit:hover {
         background: #3d3d3f;
         color: #ffffff;
+    }
+    footer{
+      height: 80px;
+      display: flex;
+      text-align: center;
+      text-transform: uppercase;
+      align-items: center;
+      a{
+        text-decoration: none;
+        font-weight: bold;
+      }
     }
 
     .more {
