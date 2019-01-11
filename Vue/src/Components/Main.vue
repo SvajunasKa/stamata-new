@@ -83,9 +83,10 @@
                         <input v-model="contacts_form.email" type="email" class="form-control" name="email" :placeholder="contacts.form_email">
                         <textarea v-model="contacts_form.message" class="form-control" rows="5" name="message"
                                   :placeholder="contacts.form_message"></textarea>
-                        <div class="g-recaptcha" ></div>
+                      <div class="g-recaptcha" data-sitekey="6Lck6ogUAAAAADBVI0S548zIhbC6g0VTmMMZigPH"></div>
                         <button id="submit" type="submit" class="form-control button" value="send-mail" name="submit"
                                 v-html="contacts.button_text"></button>
+
                         <div class="responce" v-html="responseText"></div>
                         <p v-html="error"></p>
                     </form>
@@ -93,6 +94,12 @@
 
             </div>
         </section>
+      <footer>
+        <div class="container">
+          <a>stamata.lt
+          </a>
+        </div>
+      </footer>
     </div>
 
 
@@ -184,6 +191,7 @@
                             'name': this.contacts.name,
                             'email': this.contacts.email,
                             'message':this.contacts.message,
+                            'capcha':capchaRes
                         }
                     })
                         .then(res => {
