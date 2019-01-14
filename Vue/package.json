@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "html-webpack-bom-plugin": "0.0.2",
+    "utf8": "^3.0.0",
     "vue": "^2.5.11",
     "vue-scroll-to": "^2.2.1",
     "vue-scrollto": "^2.13.0",
