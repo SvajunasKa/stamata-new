@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Send the email.
 
-            if (mail($recipient,$email_content, $email_headers)) {
+            if (mail($recipient, $subject, $email_content, $email_headers)) {
                 // Set a 200 (okay) response code.
                 http_response_code(200);
                 echo "Ačiū, žinutė buvo išsiųsta.";
