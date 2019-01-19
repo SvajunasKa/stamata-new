@@ -298,7 +298,6 @@
     }
 
     .main {
-        height: 75vh;
         background-image: url("../assets/images/bg2.jpg");
         display: flex;
         align-items: center;
@@ -312,6 +311,7 @@
             border-radius: 5px;
             text-align: center;
             width: 70%;
+            margin: 50px 0;
         }
     }
 
