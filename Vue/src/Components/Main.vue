@@ -1,124 +1,127 @@
 <template>
-    <div class="container">
+    <div>
         <header>
-            <div class="menu-btn" @click="showMenu">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>
-            <div class="logo">
-                <img src="../../src/assets/images/logo.png"/>
-            </div>
-            <ul class="nav-menu">
-                <li v-for="item in menu">
-                    <a v-html="item.menuText" v-scroll-to="'#' + item.scroll"></a>
-                </li>
-            </ul>
-            <div id="language" v-model="currentLocale" :bind="getDataByLocale" @click="toggleLang">
-                <img v-for="locale in locales" :bind="currentLocale" class="lang-option" :src="locale.img"
-                     :value="locale.id">
+            <div class="container">
+                <div class="menu-btn" @click="showMenu">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div class="logo">
+                    <img src="../../src/assets/images/logo.png"/>
+                </div>
+                <ul class="nav-menu">
+                    <li v-for="item in menu">
+                        <a v-html="item.menuText" v-scroll-to="'#' + item.scroll"></a>
+                    </li>
+                </ul>
+                <div id="language" v-model="currentLocale" :bind="getDataByLocale" @click="toggleLang">
+                    <img v-for="locale in locales" :bind="currentLocale" class="lang-option" :src="locale.img"
+                         :value="locale.id">
+                </div>
             </div>
         </header>
-        <section class="main">
-            <div class="home-wrapper">
-                <h2 v-html="main.name_text"></h2>
-                <h1 v-html="main.decription_text"></h1>
-            </div>
-        </section>
-        <section v-for="item in about" class="about" :id="item.id">
-            <div class="row">
-                <div class="col-md-4 col-sm-8">
-                    <img :src="contacts.img">
-                    <h4 v-html="contacts.cont_head"></h4>
-                    <a :href="contacts.phone_link" v-html="contacts.cont_phone"></a>
-                    <p v-html="contacts.cont_email_text"></p>
-                    <a class="mail-link" href="mailto:info@stamata.lt" v-html="contacts.cont_email"></a>
-                    <p class="down" v-scroll-to="'#' + menu[4].scroll" v-html="contacts.cont_text"></p>
-                </div>
-                <div class="col-md-8 col-sm-12">
-                    <div class="about-thumb">
-                        <h3 v-html="item.name"></h3>
-                        <div class="content">
-                            <ul>
-                                <li v-for="item1 in item.text"><p v-html="item1"></p></li>
-                            </ul>
-                            <p v-if="item.text1" v-for="item2 in item.text1" v-html="item2"></p>
-                        </div>
-                        <a class="more" @click="toggleContent" v-html="item.button_text"></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section v-for="item in paslaugos" class="about" :id="item.id">
-            <div class="row">
-                <div class="col-md-4 col-sm-8">
-                    <img :src="item.img"/>
-                </div>
-                <div class="col-md-8 col-sm-12">
-                    <div class="about-thumb">
-                        <h3 v-html="item.name"></h3>
-                        <div class="content">
-                            <ul>
-                                <li v-for="item1 in item.text"><p v-html="item1"></p></li>
-                            </ul>
-                            <p v-if="item.text1" v-for="item2 in item.text1" v-html="item2"></p>
-                        </div>
-                        <a class="more" @click="toggleContent" v-html="item.button_text"></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="Susisiekti">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
-                        <h2 v-html="contacts.contact_us"></h2>
-                        <p v-for="item in contacts.company_details" v-html="item"></p>
-                    </div>
-                </div>
-
-                <div class="col-md-12 col-sm-12">
-                    <form @submit.prevent="submit" action="../../mailer.php" id="contact-form">
-                        <input
-                          v-model="name_cont"
-                          type="text" class="form-control"
-                          name="name" :placeholder="contacts.form_name">
-                        <input
-                          v-model="email_cont"
-                          type="email" class="form-control"
-                          name="email" :placeholder="contacts.form_email"
-                          :class="{invalid: $v.email.$error}"
-                          @input="$v.email.$touch()">
-                        <textarea
-                          v-model=" messg_cont"
-                          class="form-control"
-                          rows="5"
-                          name="message"
-                          :placeholder="contacts.form_message"></textarea>
-                        <button
-                          id="submit"
-                          type="submit"
-                          class="form-control button"
-                          value="send-mail"
-                          name="submit"
-                          v-html="contacts.button_text"></button>
-
-                        <p class="responce" v-html="responseText"></p>
-                        <p v-html="error"></p>
-                    </form>
-                </div>
-
-            </div>
-        </section>
-      <footer>
         <div class="container">
-          <a href="https://stamata.lt">&copy; stamata.lt
-          </a>
+            <section class="main">
+                <div class="home-wrapper">
+                    <h2 v-html="main.name_text"></h2>
+                    <h1 v-html="main.decription_text"></h1>
+                </div>
+            </section>
+            <section v-for="item in about" class="about" :id="item.id">
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <img :src="contacts.img">
+                        <h4 v-html="contacts.cont_head"></h4>
+                        <a :href="contacts.phone_link" v-html="contacts.cont_phone"></a>
+                        <p v-html="contacts.cont_email_text"></p>
+                        <a class="mail-link" href="mailto:stamatamb@gmail.com" v-html="contacts.cont_email"></a>
+                        <p class="down" v-scroll-to="'#' + menu[4].scroll" v-html="contacts.cont_text"></p>
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="about-thumb">
+                            <h3 v-html="item.name"></h3>
+                            <div class="content">
+                                <ul>
+                                    <li v-for="item1 in item.text"><p v-html="item1"></p></li>
+                                </ul>
+                                <p v-if="item.text1" v-for="item2 in item.text1" v-html="item2"></p>
+                            </div>
+                            <a class="more" @click="toggleContent" v-html="item.button_text"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section v-for="item in paslaugos" class="about" :id="item.id">
+                <div class="row">
+                    <div class="col-md-4 col-sm-8">
+                        <img :src="item.img"/>
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="about-thumb">
+                            <h3 v-html="item.name"></h3>
+                            <div class="content">
+                                <ul>
+                                    <li v-for="item1 in item.text"><p v-html="item1"></p></li>
+                                </ul>
+                                <p v-if="item.text1" v-for="item2 in item.text1" v-html="item2"></p>
+                            </div>
+                            <a class="more" @click="toggleContent" v-html="item.button_text"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="Susisiekti">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
+                            <h2 v-html="contacts.contact_us"></h2>
+                            <p v-for="item in contacts.company_details" v-html="item"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <form @submit.prevent="submit" action="../../mailer.php" id="contact-form">
+                            <input
+                                    v-model="name_cont"
+                                    type="text" class="form-control"
+                                    name="name" :placeholder="contacts.form_name">
+                            <input
+                                    v-model="email_cont"
+                                    type="email" class="form-control"
+                                    name="email" :placeholder="contacts.form_email"
+                                    :class="{invalid: $v.email.$error}"
+                                    @input="$v.email.$touch()">
+                            <textarea
+                                    v-model=" messg_cont"
+                                    class="form-control"
+                                    rows="5"
+                                    name="message"
+                                    :placeholder="contacts.form_message"></textarea>
+                            <button
+                                    id="submit"
+                                    type="submit"
+                                    class="form-control button"
+                                    value="send-mail"
+                                    name="submit"
+                                    v-html="contacts.button_text"></button>
+
+                            <p class="responce" v-html="responseText"></p>
+                            <p v-html="error"></p>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+            <footer>
+                <div class="container">
+                    <a href="https://stamata.lt">&copy; stamata.lt
+                    </a>
+                </div>
+            </footer>
         </div>
-      </footer>
+
     </div>
-
-
 </template>
 
 <script>
@@ -149,12 +152,12 @@
                 responseText: null,
             }
         },
-      validations: {
-        email: {
-          required,
-          email
-        }
-      },
+        validations: {
+            email: {
+                required,
+                email
+            }
+        },
         mounted() {
             this.getDataByLocale();
         },
@@ -211,21 +214,21 @@
                 }
                 //let capchaRes = grecaptcha.getResponse();
                 //if (capchaRes.length > 0) {
-                    axios.post("../../mailer.php", {
-                        data: {
-                            'name': this.name_cont,
-                            'email': this.email_cont,
-                            'message':this.messg_cont,
-                            //'capcha':capchaRes
-                        }
-                    })
-                        .then(res => {
-                            this.responseText = res.data;
+                axios.post("../../mailer.php", {
+                    data: {
+                        'name': this.name_cont,
+                        'email': this.email_cont,
+                        'message': this.messg_cont,
+                        //'capcha':capchaRes
+                    }
+                })
+                    .then(res => {
+                        this.responseText = res.data;
 
-                        })
-                        .catch(e => {
-                            this.error = e.response.data;
-                        })
+                    })
+                    .catch(e => {
+                        this.error = e.response.data;
+                    })
                 // } else {
                 //     this.error = "Užpildykite formą"
                 // }
@@ -240,10 +243,11 @@
         text-decoration: underline;
         cursor: pointer;
     }
+
     header {
         position: fixed;
         top: 0;
-        width: 1110px;
+        width: 100%;
         background-color: #f4f4f4;
         z-index: 1;
         height: 60px;
@@ -253,11 +257,16 @@
         .logo {
             float: left;
         }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         ul {
             height: 60px;
             margin: 0;
             padding-left: 0;
-            width: 84%;
+            width: 85%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -369,16 +378,17 @@
         background: #3d3d3f;
         color: #ffffff;
     }
-    footer{
-      height: 80px;
-      display: flex;
-      text-align: center;
-      text-transform: uppercase;
-      align-items: center;
-      a{
-        text-decoration: none;
-        font-weight: bold;
-      }
+
+    footer {
+        height: 80px;
+        display: flex;
+        text-align: center;
+        text-transform: uppercase;
+        align-items: center;
+        a {
+            text-decoration: none;
+            font-weight: bold;
+        }
     }
 
     .more {
@@ -387,13 +397,12 @@
 
     @media only screen and (max-width: 1200px) {
         header {
-            width: 930px;
+            //width: 930px;
         }
     }
 
     @media only screen and (max-width: 992px) {
         header {
-            width: 690px;
             .nav-menu {
                 display: none;
                 &.show {
@@ -444,9 +453,7 @@
     }
 
     @media only screen and (max-width: 767px) {
-        header {
-            width: 510px;
-        }
+
         .form-control {
             &.button {
                 width: 100%;
@@ -457,16 +464,11 @@
                 width: 95%;
             }
         }
-        .more{
+        .more {
             width: 100%;
         }
     }
 
-    @media only screen and (max-width: 576px) {
-        header {
-            width: 95%;
-        }
-    }
 
 
 </style>

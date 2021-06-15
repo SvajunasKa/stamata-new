@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
 
-            $recipient = "info@stamata.lt";
+            $recipient = "stamatamb@gmail.com";
 
 
             // Set the email subject.
